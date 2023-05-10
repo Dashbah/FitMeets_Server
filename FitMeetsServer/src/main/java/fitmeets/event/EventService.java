@@ -18,13 +18,21 @@ public class EventService  {
 
     public List<Event> getEvents() {
         return eventRepository.findAll();
-//        return List.of(
-//                new Event(1L, LocalDate.of(2023, Month.MAY, 31), "Patriki",
-//                        0, 100, "Going for Yoga", 10).toString());
     }
 
     public void addNewEvent(Event event) {
         eventRepository.save(event);
         // System.out.println(event.toString());
+    }
+
+
+    public void subscribeUserToEvent(Long userId, Long eventId) {
+        var event = eventRepository.findById(eventId).orElseThrow(
+                //
+        );
+        var subscribers = event.getSubscribers();
+        subscribers.add(new LongValue(userId));
+        event.setSubscribers(subscribers);
+        eventRepository.save(event);
     }
 }

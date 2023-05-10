@@ -16,9 +16,9 @@ public class EventConfig {
     CommandLineRunner commandLineRunner(EventRepository repository) {
         return args -> {
             Event patriki = new Event( LocalDate.of(2023, Month.MAY, 31), LocalTime.of(14, 0), "Patriki",
-                    0, 100, "Going for Yoga", 10);
+                    0, 100, "Going for Yoga", "Yoga", 10, List.of(new LongValue(2L)));
             Event kg = new Event( LocalDate.of(2023, Month.JUNE, 28), LocalTime.of(11, 35), "KG",
-                    17, 20, "Running to Vyshka", 20);
+                    17, 20, "Running to Vyshka", "Running", 20, List.of(new LongValue(2L)));
             repository.saveAll(
                     List.of(patriki, kg)
             );

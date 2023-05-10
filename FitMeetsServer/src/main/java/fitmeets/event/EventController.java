@@ -24,8 +24,14 @@ public class EventController {
         return eventService.getEvents();
     }
 
-    @PostMapping
+    @PostMapping("/add")
     public void registerNewEvent(@RequestBody Event event) {
         eventService.addNewEvent(event);
     }
+
+    @PostMapping("/subscribe")
+    public void subscribeUserToEvent(@RequestBody SubscribeToEventRequest request) {
+        eventService.subscribeUserToEvent(request.getUserId(), request.getEventId());
+    }
+
 }

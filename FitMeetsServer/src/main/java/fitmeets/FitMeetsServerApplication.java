@@ -12,7 +12,6 @@ import java.time.Month;
 import java.util.List;
 
 @SpringBootApplication
-@RestController
 public class FitMeetsServerApplication {
 
     public static void main(String[] args) {
