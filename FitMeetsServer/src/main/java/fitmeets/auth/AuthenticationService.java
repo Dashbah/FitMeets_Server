@@ -1,13 +1,13 @@
 package fitmeets.auth;
 
- import fitmeets.user.Role;
- import fitmeets.user.User;
+import fitmeets.user.Role;
+import fitmeets.user.User;
 import fitmeets.config.JwtService;
 import fitmeets.user.UserRepository;
 import lombok.RequiredArgsConstructor;
- import org.springframework.security.authentication.AuthenticationManager;
- import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
- import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -19,10 +19,9 @@ public class AuthenticationService {
     private final JwtService jwtService;
 
     private final AuthenticationManager authenticationManager;
+
     public AuthenticationResponse register(RegisterRequest request) {
         var user = User.builder()
-                .firstname(request.getFirstname())
-                .lastname(request.getLastname())
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .role(Role.USER)
