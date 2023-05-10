@@ -3,9 +3,6 @@ package fitmeets.event;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.security.interfaces.EdECKey;
-import java.time.LocalDate;
-import java.time.Month;
 import java.util.List;
 
 @RestController
@@ -24,7 +21,7 @@ public class EventController {
         return eventService.getEvents();
     }
 
-    @PostMapping("/add")
+    @PostMapping()
     public void registerNewEvent(@RequestBody Event event) {
         eventService.addNewEvent(event);
     }
@@ -32,6 +29,11 @@ public class EventController {
     @PostMapping("/subscribe")
     public void subscribeUserToEvent(@RequestBody SubscribeToEventRequest request) {
         eventService.subscribeUserToEvent(request.getUserId(), request.getEventId());
+    }
+
+    @DeleteMapping
+    public void deleteEvent(@RequestBody Long eventId) {
+        eventService.deleteEvent(eventId);
     }
 
 }

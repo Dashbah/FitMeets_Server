@@ -3,8 +3,6 @@ package fitmeets.event;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
-import java.time.Month;
 import java.util.List;
 
 @Service
@@ -31,8 +29,12 @@ public class EventService  {
                 //
         );
         var subscribers = event.getSubscribers();
-        subscribers.add(new LongValue(userId));
+        subscribers.add(new UserIdValue(userId));
         event.setSubscribers(subscribers);
         eventRepository.save(event);
+    }
+
+    public void deleteEvent(Long eventId) {
+        eventRepository.deleteById(eventId);
     }
 }

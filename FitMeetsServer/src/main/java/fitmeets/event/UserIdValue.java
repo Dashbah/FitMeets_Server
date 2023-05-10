@@ -10,14 +10,14 @@ import lombok.NoArgsConstructor;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class LongValue {
+public class UserIdValue {
     @Id
     @GeneratedValue
     private Long id;
     @JsonProperty("userId")
     private Long value;
 
-    public LongValue(Long value) {
+    public UserIdValue(Long value) {
         this.value = value;
     }
 

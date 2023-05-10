@@ -1,8 +1,6 @@
 package fitmeets.user;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import fitmeets.event.LongValue;
-import fitmeets.user.SportType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

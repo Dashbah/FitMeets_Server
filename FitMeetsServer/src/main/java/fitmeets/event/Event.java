@@ -42,6 +42,9 @@ public class Event {
     private Integer minAge;
     @JsonProperty
     private Integer maxAge;
+
+    @JsonProperty
+    private String city;
     @JsonProperty
     private String description;
     @JsonProperty
@@ -52,34 +55,21 @@ public class Event {
     @JsonProperty
     @OneToMany(cascade = CascadeType.ALL)
     // @JoinColumn(name = "user_id")
-    private List<LongValue> subscribers;
+    private List<UserIdValue> subscribers;
 
     // private File photo;
-    public Event(LocalDate date, LocalTime time, String place, Integer minAge, Integer maxAge,
-                 String description, String sportType, int numOfParticipants, List<LongValue> subscribers) {
+    public Event(LocalDate date, LocalTime time, String place, Integer minAge, Integer maxAge, String city,
+                 String description, String sportType, int numOfParticipants, List<UserIdValue> subscribers) {
         this.date = date;
         this.time = time;
         this.place = place;
         this.minAge = minAge;
         this.maxAge = maxAge;
+        this.city = city;
         this.description = description;
         this.sportType = sportType;
         this.numOfParticipants = numOfParticipants;
         this.subscribers = subscribers;
     }
 
-//    @Override
-//    public String toString() {
-//        return "Event{" +
-//                "id=" + id +
-//                ", date=" + date +
-//                ", time=" + time +
-//                ", place='" + place + '\'' +
-//                ", minAge=" + minAge +
-//                ", maxAge=" + maxAge +
-//                ", description='" + description + '\'' +
-//                ", sportType='" + sportType + '\'' +
-//                ", numOfParticipants=" + numOfParticipants +
-//                '}';
-//    }
 }
