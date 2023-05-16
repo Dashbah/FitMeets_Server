@@ -28,6 +28,7 @@ public class UserService {
         }
         if (userList.size() > 1) {
 //      TODO:  throw new Exception("More then 2 users with such id");
+
         }
         var user = userList.get(0);
         user.setPassword(null);
@@ -36,11 +37,20 @@ public class UserService {
 
     public ResponseEntity<User> editUser(Long userId, User userDetails) {
         User user = userRepository.findById(userId)
-                .orElseThrow(
-                        // todo : new ResourceNotFoundException("User not found for this id :: " + userId)
-                );
-        userDetails.setId(user.getId());
-        final User updatedUser = userRepository.save(userDetails);
+                .orElseThrow();
+
+        user.setFirstname(userDetails.getFirstname());
+        user.setLastname(userDetails.getLastname());
+        user.setEmail(userDetails.getEmail());
+        user.setCity(userDetails.getCity());
+        user.setDescription(userDetails.getDescription());
+        user.setAge(userDetails.getAge());
+        user.setSex(userDetails.getSex());
+        user.setRole(userDetails.getRole());
+        user.setSportTypes(userDetails.getSportTypes());
+        user.setEvents(userDetails.getEvents());
+
+        User updatedUser = userRepository.save(user);
         return ResponseEntity.ok(updatedUser);
     }
 

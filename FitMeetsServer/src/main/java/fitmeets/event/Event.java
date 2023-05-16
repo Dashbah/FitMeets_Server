@@ -3,10 +3,7 @@ package fitmeets.event;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -16,6 +13,7 @@ import java.util.List;
 @Table
 @Getter
 @Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 // @JsonAutoDetect

@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping(path = "api/v1/user")
@@ -22,14 +23,18 @@ public class UserController {
     }
 
     @GetMapping("/info/{id}")
-    public User getInfo(Long id) {
+    public User getInfo(@PathVariable(value = "id") Long id) {
         return userService.findUserById(id);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<User> updateUser(@PathVariable(value = "id") Long userId,
                                             @RequestBody User userDetails) {
-        return userService.editUser(userId, userDetails);
+        try {
+            return userService.editUser(userId, userDetails);
+        } catch (NoSuchElementException ex) {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @GetMapping("/user-events/{id}")

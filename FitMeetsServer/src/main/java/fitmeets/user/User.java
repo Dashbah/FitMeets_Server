@@ -1,5 +1,6 @@
 package fitmeets.user;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -26,6 +27,8 @@ public class User implements UserDetails {
     private String firstname;
     private String lastname;
     private String email;
+
+    @JsonIgnore
     private String password;
 
     private String city;
@@ -37,13 +40,27 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    @JsonProperty
     @OneToMany(cascade = CascadeType.ALL)
     private List<SportType> sportTypes;
 
-    @JsonProperty
     @OneToMany(cascade = CascadeType.ALL)
     private List<EventsValue> events;
+
+//    public User(String firstname, String lastname, String email, String city,
+//                String description, Integer age, Sex sex, Role role,
+//                List<SportType> sportTypes, List<EventsValue> events) {
+//        // this.id = id;
+//        this.firstname = firstname;
+//        this.lastname = lastname;
+//        this.email = email;
+//        this.city = city;
+//        this.description = description;
+//        this.age = age;
+//        this.sex = sex;
+//        this.role = role;
+//        this.sportTypes = sportTypes;
+//        this.events = events;
+//    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
