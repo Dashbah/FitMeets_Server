@@ -50,7 +50,7 @@ public class Event {
     @JsonProperty
     private String sportType;
     @JsonProperty
-    private int numOfParticipants;
+    private Integer numOfParticipants;
 
     @JsonProperty
     @OneToMany(cascade = CascadeType.ALL)
@@ -59,7 +59,7 @@ public class Event {
 
     // private File photo;
     public Event(LocalDate date, LocalTime time, String place, Integer minAge, Integer maxAge, String city,
-                 String description, String sportType, int numOfParticipants, List<UserIdValue> subscribers) {
+                 String description, String sportType, Integer numOfParticipants, List<UserIdValue> subscribers) {
         this.date = date;
         this.time = time;
         this.place = place;

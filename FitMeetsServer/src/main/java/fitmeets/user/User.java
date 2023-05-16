@@ -41,6 +41,10 @@ public class User implements UserDetails {
     @OneToMany(cascade = CascadeType.ALL)
     private List<SportType> sportTypes;
 
+    @JsonProperty
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<EventsValue> events;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(role.name()));
