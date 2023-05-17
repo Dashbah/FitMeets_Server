@@ -1,5 +1,6 @@
 package fitmeets.user;
 
+import fitmeets.event.UserIdValue;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -68,5 +69,21 @@ public class UserService {
 
     public void deleteUser(Long userId) {
         userRepository.deleteById(userId);
+    }
+
+    public void subscribeUserToUser(Long subscriberId, Long subscribedToId) {
+        // add subscriber
+        var userToSubscribe = userRepository.findById(subscribedToId).orElseThrow();
+        var subscribers = userToSubscribe.getSubscribers();
+        subscribers.add(new UserSubscriberIdValue(subscriberId));
+        userToSubscribe.setSubscribers(subscribers);
+        userRepository.save(userToSubscribe);
+
+        // add subscription
+        var userSubscriber = userRepository.findById(subscriberId).orElseThrow();
+        var subscriptions = userSubscriber.getSubscribers();
+        subscriptions.add(new UserSubscriberIdValue(subscribedToId));
+        userSubscriber.setSubscriptions(subscriptions);
+        userRepository.save(userSubscriber);
     }
 }

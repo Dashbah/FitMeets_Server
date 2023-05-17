@@ -1,5 +1,6 @@
 package fitmeets.user;
 
+import fitmeets.event.SubscribeToEventRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -35,6 +36,11 @@ public class UserController {
         } catch (NoSuchElementException ex) {
             return ResponseEntity.notFound().build();
         }
+    }
+
+    @PostMapping("/subscribe")
+    public void subscribeUserToUser(@RequestBody SubscribeToUserRequest request) {
+        userService.subscribeUserToUser(request.getSubscriberId(), request.getSubscribedToId());
     }
 
     @GetMapping("/user-events/{id}")

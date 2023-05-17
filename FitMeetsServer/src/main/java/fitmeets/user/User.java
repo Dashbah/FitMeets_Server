@@ -1,7 +1,6 @@
 package fitmeets.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -46,21 +45,11 @@ public class User implements UserDetails {
     @OneToMany(cascade = CascadeType.ALL)
     private List<EventsValue> events;
 
-//    public User(String firstname, String lastname, String email, String city,
-//                String description, Integer age, Sex sex, Role role,
-//                List<SportType> sportTypes, List<EventsValue> events) {
-//        // this.id = id;
-//        this.firstname = firstname;
-//        this.lastname = lastname;
-//        this.email = email;
-//        this.city = city;
-//        this.description = description;
-//        this.age = age;
-//        this.sex = sex;
-//        this.role = role;
-//        this.sportTypes = sportTypes;
-//        this.events = events;
-//    }
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<UserSubscriberIdValue> subscribers;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<UserSubscriberIdValue> subscriptions;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

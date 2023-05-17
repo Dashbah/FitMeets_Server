@@ -18,7 +18,7 @@ import java.util.List;
 @NoArgsConstructor
 // @JsonAutoDetect
 public class Event {
-    @JsonProperty
+
     @Id
     @SequenceGenerator(
             name = "event_sequence",
@@ -30,27 +30,24 @@ public class Event {
             generator = "event_sequence"
     )
     private Long id;
-    @JsonProperty
     private LocalDate date;
-    @JsonProperty
+
     private LocalTime time;
-    @JsonProperty
+
     private String place;
-    @JsonProperty
+
     private Integer minAge;
-    @JsonProperty
+
     private Integer maxAge;
 
-    @JsonProperty
     private String city;
-    @JsonProperty
+
     private String description;
-    @JsonProperty
     private String sportType;
-    @JsonProperty
+
     private Integer numOfParticipants;
 
-    @JsonProperty
+
     @OneToMany(cascade = CascadeType.ALL)
     // @JoinColumn(name = "user_id")
     private List<UserIdValue> subscribers;
